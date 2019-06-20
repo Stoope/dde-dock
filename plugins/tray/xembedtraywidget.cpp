@@ -32,6 +32,7 @@
 #include <QApplication>
 #include <QScreen>
 #include <QMap>
+#include <QtMath>
 
 #include <X11/extensions/shape.h>
 #include <X11/extensions/XTest.h>
@@ -156,7 +157,14 @@ void XEmbedTrayWidget::configContainerPosition()
 
     const QPoint p(rawXPosition(QCursor::pos()));
 
-    const uint32_t containerVals[4] = {uint32_t(p.x()), uint32_t(p.y()), 1, 1};
+    const auto ratio = devicePixelRatioF();
+    const uint32_t iconSizeScaled = 2 * qCeil(ratio);
+
+    const uint32_t containerVals[4] = {
+        uint32_t(p.x()) - iconSizeScaled / 2,
+        uint32_t(p.y()) - iconSizeScaled / 2,
+        iconSizeScaled, iconSizeScaled
+    };
     xcb_configure_window(c, m_containerWid,
                          XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y | XCB_CONFIG_WINDOW_WIDTH | XCB_CONFIG_WINDOW_HEIGHT,
                          containerVals);
@@ -213,8 +221,8 @@ void XEmbedTrayWidget::wrapWindow()
 //    const uint32_t stackBelowData[] = {XCB_STACK_MODE_BELOW};
 //    xcb_configure_window(c, m_containerWid, XCB_CONFIG_WINDOW_STACK_MODE, stackBelowData);
 
-    QWindow * win = QWindow::fromWinId(m_containerWid);
-    win->setOpacity(0);
+    // QWindow * win = QWindow::fromWinId(m_containerWid);
+    // win->setOpacity(0);
 
 //    setX11PassMouseEvent(true);
 
@@ -491,8 +499,8 @@ void XEmbedTrayWidget::setX11PassMouseEvent(const bool pass)
         XRectangle rectangle;
         rectangle.x = 0;
         rectangle.y = 0;
-        rectangle.width = 1;
-        rectangle.height = 1;
+        rectangle.width = 2 * qCeil(devicePixelRatioF());
+        rectangle.height = 2 * qCeil(devicePixelRatioF());
 
         XShapeCombineRectangles(QX11Info::display(), m_containerWid, ShapeBounding, 0, 0, &rectangle, 1, ShapeSet, YXBanded);
         XShapeCombineRectangles(QX11Info::display(), m_containerWid, ShapeInput, 0, 0, &rectangle, 1, ShapeSet, YXBanded);
