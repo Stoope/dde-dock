@@ -33,6 +33,7 @@
 #include <com_deepin_dde_daemon_dock_entry.h>
 
 DWIDGET_USE_NAMESPACE
+DGUI_USE_NAMESPACE
 
 #define SNAP_WIDTH       200
 #define SNAP_HEIGHT      130
@@ -58,7 +59,6 @@ public:
 
 signals:
     void entered(const WId wid) const;
-    void leaved(const WId wid) const;
     void clicked(const WId wid) const;
     void requestCheckWindow() const;
 

@@ -38,6 +38,7 @@
 #include <QCoreApplication>
 
 DWIDGET_USE_NAMESPACE
+DCORE_USE_NAMESPACE
 
 const QString TrashDir = QDir::homePath() + "/.local/share/Trash";
 const QDir::Filters ItemsShouldCount = QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot;
@@ -102,7 +103,7 @@ void PopupControlWidget::clearTrashFloder()
 
     if (count > 0) {
         // blumia: Workaround. There is a bug with DDialog which will let DDialog always use the smallest
-        //         avaliable size of the given icon. So we create a m_dialogTrashFullIcon and leave a minimum
+        //         available size of the given icon. So we create a m_dialogTrashFullIcon and leave a minimum
         //         64*64 pixmap size icon here.
         QIcon m_dialogTrashFullIcon;
         QIcon trash_full_icon = QIcon::fromTheme("user-trash-full-opened");
@@ -115,7 +116,6 @@ void PopupControlWidget::clearTrashFloder()
         d.addButton(buttonTexts[0], true, DDialog::ButtonNormal);
         d.addButton(buttonTexts[1], false, DDialog::ButtonWarning);
         d.setDefaultButton(1);
-        d.getButton(1)->setFocus();
         d.moveToCenter();
         execCode = d.exec();
     }

@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "constants.h"
 #include "xembedtraywidget.h"
 
 #include <QWindow>
@@ -31,6 +32,7 @@
 #include <QApplication>
 #include <QScreen>
 #include <QMap>
+#include <QtMath>
 
 #include <X11/extensions/shape.h>
 #include <X11/extensions/XTest.h>
@@ -43,7 +45,7 @@
 #define WINE_WINDOW_PROP_NAME "__wine_prefix"
 #define IS_WINE_WINDOW_BY_WM_CLASS "explorer.exe"
 
-static const qreal iconSize = 16;
+static const qreal iconSize = PLUGIN_ICON_MAX_SIZE;
 
 // this static var hold all suffix of tray widget keys.
 // that is in order to fix can not show multiple trays provide by one application,
@@ -112,11 +114,6 @@ const QImage XEmbedTrayWidget::trayImage()
     return m_image;
 }
 
-QSize XEmbedTrayWidget::sizeHint() const
-{
-    return QSize(26, 26);
-}
-
 void XEmbedTrayWidget::showEvent(QShowEvent *e)
 {
     QWidget::showEvent(e);
@@ -133,9 +130,6 @@ void XEmbedTrayWidget::paintEvent(QPaintEvent *e)
     QPainter painter;
     painter.begin(this);
     painter.setRenderHint(QPainter::Antialiasing);
-#ifdef QT_DEBUG
-//    painter.fillRect(rect(), Qt::red);
-#endif
 
     const QRectF &rf = QRectF(rect());
     const QRectF &rfp = QRectF(m_image.rect());
@@ -163,7 +157,14 @@ void XEmbedTrayWidget::configContainerPosition()
 
     const QPoint p(rawXPosition(QCursor::pos()));
 
-    const uint32_t containerVals[4] = {uint32_t(p.x()), uint32_t(p.y()), 1, 1};
+    const auto ratio = devicePixelRatioF();
+    const uint32_t iconSizeScaled = 2 * qCeil(ratio);
+
+    const uint32_t containerVals[4] = {
+        uint32_t(p.x()) - iconSizeScaled / 2,
+        uint32_t(p.y()) - iconSizeScaled / 2,
+        iconSizeScaled, iconSizeScaled
+    };
     xcb_configure_window(c, m_containerWid,
                          XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y | XCB_CONFIG_WINDOW_WIDTH | XCB_CONFIG_WINDOW_HEIGHT,
                          containerVals);
@@ -183,8 +184,10 @@ void XEmbedTrayWidget::wrapWindow()
 
     auto cookie = xcb_get_geometry(c, m_windowId);
     QScopedPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(c, cookie, Q_NULLPTR));
-    if (clientGeom.isNull())
+    if (clientGeom.isNull()) {
+        m_valid = false;
         return;
+    }
 
     //create a container window
     const auto ratio = devicePixelRatioF();
@@ -218,8 +221,8 @@ void XEmbedTrayWidget::wrapWindow()
 //    const uint32_t stackBelowData[] = {XCB_STACK_MODE_BELOW};
 //    xcb_configure_window(c, m_containerWid, XCB_CONFIG_WINDOW_STACK_MODE, stackBelowData);
 
-    QWindow * win = QWindow::fromWinId(m_containerWid);
-    win->setOpacity(0);
+    // QWindow * win = QWindow::fromWinId(m_containerWid);
+    // win->setOpacity(0);
 
 //    setX11PassMouseEvent(true);
 
@@ -411,7 +414,7 @@ void XEmbedTrayWidget::refershIconImage()
     if (qimage.isNull())
         return;
 
-    m_image = qimage.scaled(16 * ratio, 16 * ratio, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    m_image = qimage.scaled(iconSize * ratio, iconSize * ratio, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     m_image.setDevicePixelRatio(ratio);
 
     update();
@@ -496,8 +499,8 @@ void XEmbedTrayWidget::setX11PassMouseEvent(const bool pass)
         XRectangle rectangle;
         rectangle.x = 0;
         rectangle.y = 0;
-        rectangle.width = 1;
-        rectangle.height = 1;
+        rectangle.width = 2 * qCeil(devicePixelRatioF());
+        rectangle.height = 2 * qCeil(devicePixelRatioF());
 
         XShapeCombineRectangles(QX11Info::display(), m_containerWid, ShapeBounding, 0, 0, &rectangle, 1, ShapeSet, YXBanded);
         XShapeCombineRectangles(QX11Info::display(), m_containerWid, ShapeInput, 0, 0, &rectangle, 1, ShapeSet, YXBanded);

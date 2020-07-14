@@ -11,6 +11,7 @@
 #include <QFile>
 #include <QTimer>
 #include <QDBusMessage>
+#include <thread>
 
 class IndicatorTrayPrivate
 {
@@ -176,16 +177,25 @@ void IndicatorTrayPrivate::initDBus(const QString &indicatorName)
         const QJsonObject action = config.value("action").toObject();
         if (!action.isEmpty())
             q->connect(indicatorTrayWidget, &IndicatorTrayWidget::clicked, q, [ = ](uint8_t button_index, int x, int y) {
-                auto triggerConfig = action.value("trigger").toObject();
-                auto dbusService = triggerConfig.value("dbus_service").toString();
-                auto dbusPath = triggerConfig.value("dbus_path").toString();
-                auto dbusInterface = triggerConfig.value("dbus_interface").toString();
-                auto methodName = triggerConfig.value("dbus_method").toString();
-                auto isSystemBus = triggerConfig.value("system_dbus").toBool(false);
-                auto bus = isSystemBus ? QDBusConnection::systemBus() : QDBusConnection::sessionBus();
+                std::thread t([=]() -> void {
+                    auto triggerConfig = action.value("trigger").toObject();
+                    auto dbusService = triggerConfig.value("dbus_service").toString();
+                    auto dbusPath = triggerConfig.value("dbus_path").toString();
+                    auto dbusInterface = triggerConfig.value("dbus_interface").toString();
+                    auto methodName = triggerConfig.value("dbus_method").toString();
+                    auto isSystemBus = triggerConfig.value("system_dbus").toBool(false);
+                    auto bus = isSystemBus ? QDBusConnection::systemBus() : QDBusConnection::sessionBus();
 
-                QDBusInterface interface(dbusService, dbusPath, dbusInterface, bus, q);
-                interface.asyncCall(methodName, button_index, x, y);
+                    QDBusInterface interface(dbusService, dbusPath, dbusInterface, bus);
+                    QDBusReply<void> reply = interface.call(methodName, button_index, x, y);
+                    if (!reply.isValid()) {
+                        qDebug() << interface.call(methodName);
+                    }
+                    else {
+                        qDebug() << reply.error();
+                    }
+                });
+                t.detach();
             });
     });
 }
@@ -233,6 +243,10 @@ void IndicatorTray::textPropertyChanged(const QDBusMessage &message)
             return;
         }
 
+        if (!d->indicatorTrayWidget) {
+            d->init();
+        }
+
         d->indicatorTrayWidget->setText(value.toByteArray());
     });
 }
@@ -245,6 +259,10 @@ void IndicatorTray::iconPropertyChanged(const QDBusMessage &message)
         if (value.toByteArray().isEmpty()) {
             Q_EMIT removed();
             return;
+        }
+
+        if (!d->indicatorTrayWidget) {
+            d->init();
         }
 
         d->indicatorTrayWidget->setPixmapData(value.toByteArray());

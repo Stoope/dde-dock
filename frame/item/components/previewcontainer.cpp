@@ -56,7 +56,6 @@ PreviewContainer::PreviewContainer(QWidget *parent)
     setFixedSize(SNAP_WIDTH, SNAP_HEIGHT);
 
     connect(m_mouseLeaveTimer, &QTimer::timeout, this, &PreviewContainer::checkMouseLeave, Qt::QueuedConnection);
-    connect(m_floatingPreview, &FloatingPreview::requestMove, this, &PreviewContainer::moveFloatingPreview);
     connect(m_waitForShowPreviewTimer, &QTimer::timeout, this, &PreviewContainer::previewFloating);
 }
 
@@ -116,11 +115,13 @@ void PreviewContainer::checkMouseLeave()
 
     m_floatingPreview->setVisible(false);
 
-    if (m_needActivate) {
-        m_needActivate = false;
-        emit requestActivateWindow(m_floatingPreview->trackedWid());
-    } else {
-        emit requestCancelPreviewWindow();
+    if (m_wmHelper->hasComposite()) {
+        if (m_needActivate) {
+            m_needActivate = false;
+            emit requestActivateWindow(m_floatingPreview->trackedWid());
+        } else {
+            emit requestCancelPreviewWindow();
+        }
     }
 
     emit requestHidePopup();
@@ -168,8 +169,7 @@ void PreviewContainer::appendSnapWidget(const WId wid)
 
     connect(snap, &AppSnapshot::clicked, this, &PreviewContainer::onSnapshotClicked, Qt::QueuedConnection);
     connect(snap, &AppSnapshot::entered, this, &PreviewContainer::previewEntered, Qt::QueuedConnection);
-    connect(snap, &AppSnapshot::requestCheckWindow, this, &PreviewContainer::requestCheckWindows);
-    connect(snap, &AppSnapshot::leaved, m_waitForShowPreviewTimer, &QTimer::stop);
+    connect(snap, &AppSnapshot::requestCheckWindow, this, &PreviewContainer::requestCheckWindows, Qt::QueuedConnection);
 
     m_windowListLayout->addWidget(snap);
 
@@ -186,6 +186,10 @@ void PreviewContainer::enterEvent(QEvent *e)
 
     m_needActivate = false;
     m_mouseLeaveTimer->stop();
+
+    if (m_wmHelper->hasComposite()) {
+        m_waitForShowPreviewTimer->start();
+    }
 }
 
 void PreviewContainer::leaveEvent(QEvent *e)
@@ -217,7 +221,9 @@ void PreviewContainer::dragLeaveEvent(QDragLeaveEvent *e)
 
 void PreviewContainer::onSnapshotClicked(const WId wid)
 {
-    Q_UNUSED(wid);
+    if (!m_wmHelper->hasComposite()) {
+        emit requestActivateWindow(wid);
+    }
 
     m_needActivate = true;
     // the leaveEvent of this widget will be called after this signal
@@ -243,30 +249,12 @@ void PreviewContainer::previewEntered(const WId wid)
     m_currentWId = wid;
 
     m_floatingPreview->trackWindow(snap);
-    m_waitForShowPreviewTimer->start();
-}
 
-void PreviewContainer::moveFloatingPreview(const QPoint &p)
-{
-    const bool horizontal = m_windowListLayout->direction() == QBoxLayout::LeftToRight;
-    const QRect r = rect();
-
-    if (horizontal)
-    {
-        if (p.x() < r.left())
-            m_floatingPreview->move(MARGIN, p.y());
-        else if (p.x() + m_floatingPreview->width() > r.right())
-            m_floatingPreview->move(r.right() - m_floatingPreview->width() - MARGIN + 1, p.y());
-        else
-            m_floatingPreview->move(p);
-    } else {
-        if (p.y() < r.top())
-            m_floatingPreview->move(p.x(), MARGIN);
-        else if (p.y() + m_floatingPreview->height() > r.bottom())
-            m_floatingPreview->move(p.x(), r.bottom() - m_floatingPreview->height() - MARGIN + 1);
-        else
-            m_floatingPreview->move(p);
+    if (m_waitForShowPreviewTimer->isActive()) {
+        return;
     }
+
+    previewFloating();
 }
 
 void PreviewContainer::previewFloating()

@@ -1,3 +1,95 @@
+<a name="4.10.6"></a>
+### 4.10.6 (2019-07-05)
+
+
+#### Bug Fixes
+
+* **overlay:**  head define conflict ([ea81b732](https://github.com/linuxdeepin/dde-dock/commit/ea81b7326dc33c853af8ccb3a74af15485099dde))
+
+#### Others
+
+*   disable show animation for sw mips and arm ([65f54a1a](https://github.com/linuxdeepin/dde-dock/commit/65f54a1a7e23132c9e810c702cdabf52ae8428bd))
+*   plugin init is done in other threads ([c37ea374](https://github.com/linuxdeepin/dde-dock/commit/c37ea37404af59be99598311436994bb52fbcbe1))
+*   remove load plugins timer ([d7b3b4a5](https://github.com/linuxdeepin/dde-dock/commit/d7b3b4a59a363b0185b111fce16cf9fb89e3c79a))
+* **docs:**  补充本地插件路径的文档 ([c5795ece](https://github.com/linuxdeepin/dde-dock/commit/c5795ecebc7f1d38218c75261c847cb41c109ffe))
+* **tray:**  disable tray for local config (#224) ([42e1cf49](https://github.com/linuxdeepin/dde-dock/commit/42e1cf492a8feb71ab1c1964fdb752687b249b89))
+
+#### Features
+
+* **plugin:**  support init plugins for ~/.local/lib/dde-dock/plugins ([e0bc2e0a](https://github.com/linuxdeepin/dde-dock/commit/e0bc2e0abbd58633499f5c90ddb406147ab9c734))
+
+
+
+<a name="4.10.5"></a>
+### 4.10.5 (2019-06-25)
+
+
+#### Others
+
+*   disable show animation for sw platform ([207911ec](https://github.com/linuxdeepin/dde-dock/commit/207911ecbe791bf5b08b5b93fcdebc3915ebbad2))
+
+
+
+<a name="4.10.4"></a>
+### 4.10.4 (2019-06-25)
+
+
+#### Bug Fixes
+
+* **2d:**  Clicking on the preview will crash ([4bb03fa9](https://github.com/linuxdeepin/dde-dock/commit/4bb03fa9aeec9522e6252be5ece2b6d45232bf13))
+
+
+
+<a name="4.10.3"></a>
+### 4.10.3 (2019-06-13)
+
+
+#### Others
+
+* **power:**  use onBattery to replace batteryState to check is used battery ([2e7a4e6f](https://github.com/linuxdeepin/dde-dock/commit/2e7a4e6fa9f960964af97648e7672359f906af7c))
+
+
+
+<a name="4.10.2"></a>
+### 4.10.2 (2019-06-01)
+
+
+#### Bug Fixes
+
+* **overlay:**  disable overlay failed ([95aad7e3](https://github.com/linuxdeepin/dde-dock/commit/95aad7e3875682e32cd984d75e90935ea896c026))
+* **plugins:**  scrolling on the item, popup will hide ([8faa324e](https://github.com/linuxdeepin/dde-dock/commit/8faa324e9867fa4c6fdbedd52bc7a81bff8e5346))
+* **preview:**  cannot switch preview window ([82d6b4b3](https://github.com/linuxdeepin/dde-dock/commit/82d6b4b38a4cdac374be2d0752de94067658d0ac))
+
+
+
+<a name="4.10.1"></a>
+### 4.10.1 (2019-05-28)
+
+
+#### Bug Fixes
+
+* **tray:**  cannot click indicator ([e902ba4c](https://github.com/linuxdeepin/dde-dock/commit/e902ba4cc1eb7deb53a21a9f6d47dddc03cc4c1a))
+
+
+
+<a name=""></a>
+##  4.10.0 (2019-05-23)
+
+
+#### Bug Fixes
+
+*   typos ([c94a4d69](https://github.com/linuxdeepin/dde-dock/commit/c94a4d69a5c2f36a5720ccf4c0d7e6aba4e08c11))
+* **network:**  refresh loading icon not align center ([73b39e68](https://github.com/linuxdeepin/dde-dock/commit/73b39e6846fae1a81828860670b268fa87f2ba80))
+* **overlay:**  polkit dialog not translation message ([f1441cc1](https://github.com/linuxdeepin/dde-dock/commit/f1441cc1e76a4dca27004876b080fd9282217d0b))
+* **preview:**
+  *  float preview background have wrong offset ([06c82709](https://github.com/linuxdeepin/dde-dock/commit/06c827091e7748eaad72db61ad7dd4acf6855c5e))
+  *  crash when click active item on 2d ([2b51e164](https://github.com/linuxdeepin/dde-dock/commit/2b51e164aa0e865ae13b56d4d399f5a3e3e1c6cc))
+* **tray:**
+  *  indicator click is invalid ([2840c868](https://github.com/linuxdeepin/dde-dock/commit/2840c86844c7f55a32b04da92237c537cbe14f8e))
+  *  Adding a keyboard layout for the first time will crash ([0a71b340](https://github.com/linuxdeepin/dde-dock/commit/0a71b340ac7b0e913f4871c7149cbcbc5e18f06d))
+
+
+
 <a name="4.9.11"></a>
 ### 4.9.11 (2019-05-10)
 

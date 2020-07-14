@@ -27,18 +27,20 @@
 #include "dbus/dbuspower.h"
 #include "../widgets/tipswidget.h"
 
+#include <com_deepin_system_systempower.h>
+
 #include <QLabel>
 
+using SystemPowerInter = com::deepin::system::Power;
+
 // from https://upower.freedesktop.org/docs/Device.html#Device:State
-enum BatteryState 
+enum BatteryState
 {
-    UNKOWN = 0,
-    CHARGING = 1,
-    DISCHARGING = 2,
-    EMPTY = 3,
-    FULLY_CHARGED = 4,
-    PENDING_CHARGE = 5,
-    PENDING_DISCHARGE = 6
+    UNKNOWN = 0,        // 未知
+    CHARGING = 1,       // 充电中
+    DIS_CHARGING = 2,   // 放电
+    NOT_CHARGED = 3,    // 未充
+    FULLY_CHARGED = 4   // 充满
 };
 
 class PowerPlugin : public QObject, PluginsItemInterface
@@ -70,6 +72,7 @@ private:
     void updateBatteryVisible();
     void loadPlugin();
     void refreshPluginItemsVisible();
+    void refreshTipsData();
 
 private:
     bool m_pluginLoaded;
@@ -77,9 +80,8 @@ private:
     PowerStatusWidget *m_powerStatusWidget;
     TipsWidget *m_tipsLabel;
 
+    SystemPowerInter *m_systemPowerInter;
     DBusPower *m_powerInter;
-    QDBusInterface *m_uPowerInter;
-    QDBusInterface *m_uBatteryDeviceInter;
 };
 
 #endif // POWERPLUGIN_H

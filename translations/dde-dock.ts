@@ -1,440 +1,508 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en">
 <context>
     <name>AbstractPluginsController</name>
     <message>
-        <location filename="../frame/util/abstractpluginscontroller.cpp" line="163"/>
         <source>The plugin %1 is not compatible with the system.</source>
+        <translation>The plugin %1 is not compatible with the system.</translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothApplet</name>
+    <message>
+        <source>Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ContainerItem</name>
+    <name>BluetoothItem</name>
     <message>
-        <location filename="../frame/item/containeritem.cpp" line="33"/>
-        <source>Click to display hidden icon</source>
+        <source>Turn off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bluetooth settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothPlugin</name>
+    <message>
+        <source>Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DBusAdaptors</name>
     <message>
-        <location filename="../plugins/keyboard-layout/dbusadaptors.cpp" line="138"/>
         <source>Add keyboard layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Add keyboard layout</translation>
     </message>
 </context>
 <context>
     <name>DatetimePlugin</name>
     <message>
-        <location filename="../plugins/datetime/datetimeplugin.cpp" line="57"/>
         <source>Datetime</source>
-        <translation type="unfinished"></translation>
+        <translation>Datetime</translation>
     </message>
     <message>
-        <location filename="../plugins/datetime/datetimeplugin.cpp" line="143"/>
         <source>12 Hour Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">12 Hour Time</translation>
     </message>
     <message>
-        <location filename="../plugins/datetime/datetimeplugin.cpp" line="145"/>
         <source>24 Hour Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">24 Hour Time</translation>
     </message>
     <message>
-        <location filename="../plugins/datetime/datetimeplugin.cpp" line="151"/>
         <source>Time Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Time Settings</translation>
+    </message>
+    <message>
+        <source>12-hour time</source>
+        <translation>12-hour time</translation>
+    </message>
+    <message>
+        <source>24-hour time</source>
+        <translation>24-hour time</translation>
+    </message>
+    <message>
+        <source>Time settings</source>
+        <translation>Time settings</translation>
     </message>
 </context>
 <context>
     <name>DeviceItem</name>
     <message>
-        <location filename="../plugins/network/item/deviceitem.cpp" line="59"/>
         <source>Enable network</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable network</translation>
     </message>
     <message>
-        <location filename="../plugins/network/item/deviceitem.cpp" line="61"/>
         <source>Disable network</source>
-        <translation type="unfinished"></translation>
+        <translation>Disable network</translation>
     </message>
     <message>
-        <location filename="../plugins/network/item/deviceitem.cpp" line="67"/>
         <source>Network settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Network settings</translation>
     </message>
 </context>
 <context>
     <name>DialogManager</name>
     <message>
-        <location filename="../plugins/trash/popupcontrolwidget.cpp" line="88"/>
         <source>Are you sure you want to empty %1 items?</source>
-        <translation type="unfinished"></translation>
+        <translation>Are you sure you want to empty %1 items?</translation>
     </message>
     <message>
-        <location filename="../plugins/trash/popupcontrolwidget.cpp" line="93"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../plugins/trash/popupcontrolwidget.cpp" line="93"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete</translation>
     </message>
     <message>
-        <location filename="../plugins/trash/popupcontrolwidget.cpp" line="113"/>
         <source>This action cannot be restored</source>
-        <translation type="unfinished"></translation>
+        <translation>This action cannot be restored</translation>
     </message>
 </context>
 <context>
     <name>DiskControlItem</name>
     <message>
-        <location filename="../plugins/disk-mount/diskcontrolitem.cpp" line="106"/>
         <source>Unknown device</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown device</translation>
     </message>
     <message>
-        <location filename="../plugins/disk-mount/diskcontrolitem.cpp" line="112"/>
         <source>Unknown volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown volume</translation>
     </message>
 </context>
 <context>
     <name>DiskMountPlugin</name>
     <message>
-        <location filename="../plugins/disk-mount/diskmountplugin.cpp" line="40"/>
         <source>Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>Disk</translation>
     </message>
     <message>
-        <location filename="../plugins/disk-mount/diskmountplugin.cpp" line="90"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Open</translation>
     </message>
     <message>
-        <location filename="../plugins/disk-mount/diskmountplugin.cpp" line="96"/>
         <source>Unmount all</source>
-        <translation type="unfinished"></translation>
+        <translation>Unmount all</translation>
     </message>
 </context>
 <context>
     <name>DockSettings</name>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="47"/>
         <source>Fashion Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Fashion Mode</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="48"/>
         <source>Efficient Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Efficient Mode</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="49"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Top</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="50"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="51"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Left</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="52"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Right</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="53"/>
-        <source>Large</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../frame/util/docksettings.cpp" line="54"/>
-        <source>Medium</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../frame/util/docksettings.cpp" line="55"/>
-        <source>Small</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../frame/util/docksettings.cpp" line="56"/>
         <source>Keep Shown</source>
-        <translation type="unfinished"></translation>
+        <translation>Keep Shown</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="57"/>
         <source>Keep Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Keep Hidden</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="58"/>
         <source>Smart Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Smart Hide</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="93"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="101"/>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Location</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="108"/>
-        <source>Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../frame/util/docksettings.cpp" line="115"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
-        <location filename="../frame/util/docksettings.cpp" line="119"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugins</translation>
     </message>
 </context>
 <context>
     <name>LauncherItem</name>
     <message>
-        <location filename="../frame/item/launcheritem.cpp" line="105"/>
         <source>Launcher</source>
+        <translation>Launcher</translation>
+    </message>
+</context>
+<context>
+    <name>MultitaskingPlugin</name>
+    <message>
+        <source>Multitasking View</source>
+        <translation>Multitasking View</translation>
+    </message>
+    <message>
+        <source>Undock</source>
+        <translation>Undock</translation>
+    </message>
+</context>
+<context>
+    <name>NetworkItem</name>
+    <message>
+        <source>Wireless connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wired connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable wired connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable wired connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable wireless connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable wireless connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable network</source>
+        <translation type="unfinished">Disable network</translation>
+    </message>
+    <message>
+        <source>Enable network</source>
+        <translation type="unfinished">Enable network</translation>
+    </message>
+    <message>
+        <source>Network settings</source>
+        <translation type="unfinished">Network settings</translation>
+    </message>
+    <message>
+        <source>Device disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wireless connection: %1</source>
+        <translation type="unfinished">Wireless connection: %1</translation>
+    </message>
+    <message>
+        <source>Wired connection: %1</source>
+        <translation type="unfinished">Wired connection: %1</translation>
+    </message>
+    <message>
+        <source>Not connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected but not Internet access</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network cable unplugged</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>NetworkPlugin</name>
     <message>
-        <location filename="../plugins/network/networkplugin.cpp" line="49"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Network</translation>
     </message>
 </context>
 <context>
     <name>OnboardPlugin</name>
     <message>
-        <location filename="../plugins/onboard/onboardplugin.cpp" line="35"/>
-        <location filename="../plugins/onboard/onboardplugin.cpp" line="46"/>
         <source>Onboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Onboard</translation>
     </message>
     <message>
-        <location filename="../plugins/onboard/onboardplugin.cpp" line="97"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Settings</translation>
     </message>
 </context>
 <context>
     <name>PowerPlugin</name>
     <message>
-        <location filename="../plugins/power/powerplugin.cpp" line="46"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Power</translation>
     </message>
     <message>
-        <location filename="../plugins/power/powerplugin.cpp" line="71"/>
-        <source>Remaining Capacity %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/power/powerplugin.cpp" line="76"/>
-        <source>Charged %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/power/powerplugin.cpp" line="78"/>
-        <source>Charging %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/power/powerplugin.cpp" line="124"/>
         <source>Power settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Power settings</translation>
+    </message>
+    <message>
+        <source>Capacity %1, %2 min remaining</source>
+        <translation>Capacity %1, %2 min remaining</translation>
+    </message>
+    <message>
+        <source>Capacity %1, %2 hr %3 min remaining</source>
+        <translation>Capacity %1, %2 hr %3 min remaining</translation>
+    </message>
+    <message>
+        <source>Charged %1</source>
+        <translation type="vanished">Charged %1</translation>
+    </message>
+    <message>
+        <source>Charging %1, %2 min until full</source>
+        <translation>Charging %1, %2 min until full</translation>
+    </message>
+    <message>
+        <source>Charging %1, %2 hr %3 min until full</source>
+        <translation>Charging %1, %2 hr %3 min until full</translation>
+    </message>
+    <message>
+        <source>Charging %1 ....</source>
+        <translation>Charging %1 ....</translation>
+    </message>
+    <message>
+        <source>%1 charged</source>
+        <translation>%1 charged</translation>
+    </message>
+</context>
+<context>
+    <name>ShowDesktopPlugin</name>
+    <message>
+        <source>Show Desktop</source>
+        <translation>Show Desktop</translation>
+    </message>
+    <message>
+        <source>Undock</source>
+        <translation>Undock</translation>
     </message>
 </context>
 <context>
     <name>ShutdownPlugin</name>
     <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="108"/>
-        <source>Shut down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="114"/>
-        <source>Restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="128"/>
-        <source>Hibernate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="136"/>
-        <source>Lock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="142"/>
-        <source>Log out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="121"/>
-        <source>Suspend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="46"/>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="62"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Power</translation>
     </message>
     <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="150"/>
+        <source>Shut down</source>
+        <translation>Shut down</translation>
+    </message>
+    <message>
+        <source>Restart</source>
+        <translation type="vanished">Restart</translation>
+    </message>
+    <message>
+        <source>Suspend</source>
+        <translation>Suspend</translation>
+    </message>
+    <message>
+        <source>Hibernate</source>
+        <translation>Hibernate</translation>
+    </message>
+    <message>
+        <source>Lock</source>
+        <translation>Lock</translation>
+    </message>
+    <message>
+        <source>Log out</source>
+        <translation>Log out</translation>
+    </message>
+    <message>
         <source>Switch account</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch account</translation>
     </message>
     <message>
-        <location filename="../plugins/shutdown/shutdownplugin.cpp" line="158"/>
         <source>Power settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Power settings</translation>
+    </message>
+    <message>
+        <source>Reboot</source>
+        <translation>Reboot</translation>
     </message>
 </context>
 <context>
     <name>SoundApplet</name>
     <message>
-        <location filename="../plugins/sound/soundapplet.cpp" line="54"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Device</translation>
     </message>
     <message>
-        <location filename="../plugins/sound/soundapplet.cpp" line="72"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Application</translation>
     </message>
 </context>
 <context>
     <name>SoundItem</name>
     <message>
-        <location filename="../plugins/sound/sounditem.cpp" line="78"/>
         <source>Unmute</source>
-        <translation type="unfinished"></translation>
+        <translation>Unmute</translation>
     </message>
     <message>
-        <location filename="../plugins/sound/sounditem.cpp" line="80"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mute</translation>
     </message>
     <message>
-        <location filename="../plugins/sound/sounditem.cpp" line="86"/>
         <source>Audio Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Audio Settings</translation>
     </message>
     <message>
-        <location filename="../plugins/sound/sounditem.cpp" line="207"/>
         <source>Current Volume %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Current Volume %1</translation>
+    </message>
+    <message>
+        <source>Sound settings</source>
+        <translation>Sound settings</translation>
+    </message>
+    <message>
+        <source>Volume %1</source>
+        <translation>Volume %1</translation>
     </message>
 </context>
 <context>
     <name>SoundPlugin</name>
     <message>
-        <location filename="../plugins/sound/soundplugin.cpp" line="40"/>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Sound</translation>
     </message>
 </context>
 <context>
     <name>TrashPlugin</name>
     <message>
-        <location filename="../plugins/trash/trashplugin.cpp" line="52"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Trash</translation>
     </message>
     <message>
-        <location filename="../plugins/trash/trashplugin.cpp" line="90"/>
         <source>Trash - %1 file</source>
-        <translation type="unfinished"></translation>
+        <translation>Trash - %1 file</translation>
     </message>
     <message>
-        <location filename="../plugins/trash/trashplugin.cpp" line="92"/>
         <source>Trash - %1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>Trash - %1 files</translation>
     </message>
 </context>
 <context>
     <name>TrashWidget</name>
     <message>
-        <location filename="../plugins/trash/trashwidget.cpp" line="71"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Open</translation>
     </message>
     <message>
-        <location filename="../plugins/trash/trashwidget.cpp" line="79"/>
         <source>Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Empty</translation>
     </message>
 </context>
 <context>
     <name>TrayPlugin</name>
     <message>
-        <location filename="../plugins/tray/trayplugin.cpp" line="60"/>
         <source>System Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>System Tray</translation>
     </message>
 </context>
 <context>
     <name>WiredItem</name>
     <message>
-        <location filename="../plugins/network/item/wireditem.cpp" line="47"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Unknown</translation>
     </message>
     <message>
-        <location filename="../plugins/network/item/wireditem.cpp" line="199"/>
         <source>Wired connection: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Wired connection: %1</translation>
     </message>
 </context>
 <context>
     <name>WirelessItem</name>
     <message>
-        <location filename="../plugins/network/item/wirelessitem.cpp" line="49"/>
         <source>No Network</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">No Network</translation>
     </message>
     <message>
-        <location filename="../plugins/network/item/wirelessitem.cpp" line="275"/>
         <source>Wireless Connection: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Wireless Connection: %1</translation>
+    </message>
+    <message>
+        <source>Connected but no Internet access</source>
+        <translation type="vanished">Connected but no Internet access</translation>
+    </message>
+    <message>
+        <source>Wireless connection: %1</source>
+        <translation type="vanished">Wireless connection: %1</translation>
     </message>
 </context>
 <context>
     <name>WirelessList</name>
     <message>
-        <location filename="../plugins/network/item/applet/wirelesslist.cpp" line="159"/>
         <source>Wireless Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Wireless Network</translation>
     </message>
     <message>
-        <location filename="../plugins/network/item/applet/wirelesslist.cpp" line="161"/>
         <source>Wireless Network %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Wireless Network %1</translation>
     </message>
 </context>
 </TS>

@@ -24,6 +24,8 @@
 #include <QScreen>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QAccessible>
+#include <QAccessibleEvent>
 
 DWIDGET_USE_NAMESPACE
 
@@ -38,17 +40,18 @@ DockPopupWindow::DockPopupWindow(QWidget *parent)
     m_acceptDelayTimer->setSingleShot(true);
     m_acceptDelayTimer->setInterval(100);
 
+    setAccessibleName("popup");
+
     m_wmHelper = DWindowManagerHelper::instance();
 
     compositeChanged();
 
-    setBackgroundColor(DBlurEffectWidget::DarkColor);
     setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::WindowStaysOnTopHint | Qt::WindowDoesNotAcceptFocus);
     setAttribute(Qt::WA_InputMethodEnabled, false);
 
     connect(m_acceptDelayTimer, &QTimer::timeout, this, &DockPopupWindow::accept);
     connect(m_wmHelper, &DWindowManagerHelper::hasCompositeChanged, this, &DockPopupWindow::compositeChanged);
-    connect(m_regionInter, &DRegionMonitor::buttonRelease, this, &DockPopupWindow::onGlobMouseRelease);
+    connect(m_regionInter, &DRegionMonitor::buttonPress, this, &DockPopupWindow::onGlobMouseRelease);
 }
 
 DockPopupWindow::~DockPopupWindow()
@@ -67,6 +70,9 @@ void DockPopupWindow::setContent(QWidget *content)
         lastWidget->removeEventFilter(this);
     content->installEventFilter(this);
 
+    QAccessibleEvent event(this, QAccessible::NameChanged);
+    QAccessible::updateAccessibility(&event);
+
     setAccessibleName(content->objectName() + "-popup");
 
     DArrowRectangle::setContent(content);
@@ -79,11 +85,12 @@ void DockPopupWindow::show(const QPoint &pos, const bool model)
 
     show(pos.x(), pos.y());
 
-    const bool regionRegistered = m_regionInter->registered();
-    if (!m_model && regionRegistered) {
+    if (m_regionInter->registered()) {
         m_regionInter->unregisterRegion();
-    } else if (m_model && !regionRegistered) {
-        QTimer::singleShot(100, this, [=] { m_regionInter->registerRegion(); });
+    }
+
+    if (m_model) {
+        m_regionInter->registerRegion();
     }
 }
 
@@ -136,8 +143,12 @@ bool DockPopupWindow::eventFilter(QObject *o, QEvent *e)
 
 void DockPopupWindow::onGlobMouseRelease(const QPoint &mousePos, const int flag)
 {
-    Q_UNUSED(flag);
     Q_ASSERT(m_model);
+
+    if (!((flag == DRegionMonitor::WatchedFlags::Button_Left) ||
+          (flag == DRegionMonitor::WatchedFlags::Button_Right))) {
+        return;
+    }
 
     const QRect rect = QRect(pos(), size());
     if (rect.contains(mousePos))
